@@ -81,6 +81,10 @@ export default Mixin.create({
     const abortController = new AbortController();
     requestOptions.signal = abortController.signal;
 
+    if (options.credentials) {
+      requestOptions.credentials = options.credentials;
+    }
+
     // If `contentType` is set to false, we want to not send anything and let the browser decide
     // We also want to ensure that no content-type was manually set on options.headers before overwriting it
     if (
